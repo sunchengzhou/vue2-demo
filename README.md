@@ -1,8 +1,8 @@
-npm install
--安装项目依赖
+#安装项目依赖
+1.npm install
 
-npm run build
--构建发布目录
+#构建发布目录
+2.npm run build
 
-npm run dev
--构建开发目录，打开地址localhost：8080
+#构建开发目录，打开地址localhost：3000
+3.npm run dev
