@@ -1,18 +1,24 @@
 <template>
-  <header class="main-header">
-      <h1>Todo</h1>
-  </header>
+    <header class="main-header">
+      <h1>记事本</h1>
+    </header>
 </template>
-
+<script>
+  export default {
+    data(){
+      return{
+        msg:''
+      }
+    }
+  }
+</script>
 <style lang="stylus" scoped>
-.main-header{
-    text-align center
-    h1{
-        font-size  100px
-        color rgba(175,47,47,0.4)
-        font-weight 100
-        margin 20px
-    }    
-}
+  .main-header  
+      height 50px;
+      line-height 50px
+      margin:0 auto;
+      text-align center 
+      font-size 40px
+      color #ff0
+      margin-bottom 30px
 </style>
-

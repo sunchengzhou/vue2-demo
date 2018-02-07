@@ -1,9 +1,8 @@
 const path=require('path');
 const HTMLPlugin=require('html-webpack-plugin');
 const webpack=require('webpack');
-
-const isDev=process.env.NODE_ENV==="production"
-
+// 判断是否为开发环境
+const isDev=process.env.NODE_ENV==="development"
 const config={
     target:'web',
     entry:path.join(__dirname,'src/index.js'),
@@ -23,18 +22,15 @@ const config={
         },
         {
           test:/\.css$/,
-          use:[
-            'style-loader',
-            'css-loader'
-          ]
+          use:['style-loader','css-loader']
         },
         {
-          test:/\.styl$/,
+          test:/\.styl/,
           use:[
             'style-loader',
             'css-loader',
             {
-              loader:'postcss-loader',
+              loader:"postcss-loader",
               options:{
                 sourceMap:true
               }
@@ -43,7 +39,7 @@ const config={
           ]
         },
         {
-          test:/\.(png|jpg|jepg|gif|svg)$/,
+          test:/\.(gif|jpg|jpeg|png|svg)$/,
           use:[
             {
               loader:'url-loader',
@@ -67,19 +63,16 @@ const config={
 }
 
 if(isDev){
-  // 查看原js代码
   config.devtool="#cheap-module-eval-source-map"
-  // 开发时开启服务器
-  //问题:port,host设置无效，直接写入shell运行脚本中
   config.devServer={
     port:8000,
-    host:'0.0.0.0',
+    host:'localhost',
     overlay:{
       errors:true
     },
+    open:true,
     hot:true
   }
-  // 热更新插件
   config.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin()
@@ -87,4 +80,3 @@ if(isDev){
 }
 
 module.exports=config;
-
